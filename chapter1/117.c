@@ -1,11 +1,11 @@
 #include<stdio.h>
 
-//输入多行文本，输出最长一行的文本及其长度
+//打印长度超过80个字符的所有输入行
 
 /*
  * 宏定义
  */
-#define MAXLINE 5
+#define MAXLINE 1000
 
 
 /*
@@ -15,19 +15,13 @@ int gotline(char line[], int maxline);
 void copy(char to[], char from[]);
 
 int main(void){
-    char longest[MAXLINE], line[MAXLINE];
-    int max = 0;    //当前最长一行的长度
+    char line[MAXLINE];
     int len = 0;    //当前行的长度
 
     while((len = gotline(line, MAXLINE))>0){
-        if(len>max){
-            max = len;
-            copy(longest, line);
+        if(len>80){
+            printf("%s\n", line);
         }
-    }
-    
-    if(max>0){
-        printf("%s\n", longest);
     }
 
     return 0;
